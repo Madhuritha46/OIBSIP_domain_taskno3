@@ -217,7 +217,7 @@ https://your-streamlit-app-link.streamlit.app
 
 ### Madhu Ritha
 
-Machine Learning & Data Analytics Enthusiast
+
 
 ---
 
