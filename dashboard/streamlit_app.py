@@ -21,7 +21,7 @@ from app.utils import insert_log
 # Create database
 create_database()
 
-# Page Config
+# Page Configuration
 st.set_page_config(
     page_title="Fraud Detection System",
     layout="wide"
@@ -49,7 +49,7 @@ if page == "Home":
 
     st.write("""
     Machine Learning based Fraud Detection System using XGBoost.
-    
+
     Features:
     - Real-time fraud prediction
     - Interactive dashboard
@@ -63,13 +63,24 @@ elif page == "Dataset Insights":
 
     st.header("📊 Dataset Insights")
 
-    try:
+    uploaded_file = st.file_uploader(
+        "Upload Credit Card CSV File",
+        type=["csv"]
+    )
 
-        df = pd.read_csv("data/creditcard.csv")
+    if uploaded_file is not None:
+
+        df = pd.read_csv(uploaded_file)
+
+        st.success("Dataset Uploaded Successfully!")
 
         st.subheader("Dataset Preview")
 
         st.dataframe(df.head())
+
+        st.subheader("Dataset Shape")
+
+        st.write(df.shape)
 
         st.subheader("Fraud Distribution")
 
@@ -91,9 +102,9 @@ elif page == "Dataset Insights":
 
         st.plotly_chart(fig2, use_container_width=True)
 
-    except:
+    else:
 
-        st.warning("Dataset file not uploaded to deployment.")
+        st.info("Please upload the dataset CSV file to view insights.")
 
 # FRAUD PREDICTION PAGE
 elif page == "Fraud Prediction":
