@@ -28,7 +28,7 @@ st.set_page_config(
 )
 
 # Title
-st.title("💳 Credit Card Fraud Detection System")
+st.title("💳 Fraud Detection System")
 
 # Sidebar
 st.sidebar.title("Navigation")
@@ -48,7 +48,7 @@ if page == "Home":
     st.header("🏠 Home")
 
     st.write("""
-    Advanced Fraud Detection System using Machine Learning and XGBoost.
+    Machine Learning based Fraud Detection System using XGBoost.
     
     Features:
     - Real-time fraud prediction
@@ -63,31 +63,37 @@ elif page == "Dataset Insights":
 
     st.header("📊 Dataset Insights")
 
-    df = pd.read_csv("data/creditcard.csv")
+    try:
 
-    st.subheader("Dataset Preview")
+        df = pd.read_csv("data/creditcard.csv")
 
-    st.dataframe(df.head())
+        st.subheader("Dataset Preview")
 
-    st.subheader("Fraud Distribution")
+        st.dataframe(df.head())
 
-    fig = px.histogram(
-        df,
-        x="Class",
-        title="Fraud vs Legitimate Transactions"
-    )
+        st.subheader("Fraud Distribution")
 
-    st.plotly_chart(fig, use_container_width=True)
+        fig = px.histogram(
+            df,
+            x="Class",
+            title="Fraud vs Legitimate Transactions"
+        )
 
-    st.subheader("Transaction Amount Distribution")
+        st.plotly_chart(fig, use_container_width=True)
 
-    fig2 = px.box(
-        df,
-        y="Amount",
-        title="Transaction Amount Distribution"
-    )
+        st.subheader("Transaction Amount Distribution")
 
-    st.plotly_chart(fig2, use_container_width=True)
+        fig2 = px.box(
+            df,
+            y="Amount",
+            title="Transaction Amount Distribution"
+        )
+
+        st.plotly_chart(fig2, use_container_width=True)
+
+    except:
+
+        st.warning("Dataset file not uploaded to deployment.")
 
 # FRAUD PREDICTION PAGE
 elif page == "Fraud Prediction":
