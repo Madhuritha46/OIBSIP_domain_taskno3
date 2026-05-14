@@ -203,15 +203,9 @@ http://127.0.0.1:8000/docs
 ---
 
 # 🌍 Live Demo
+https://fraud-detection-system-8tzzoyeiexh92rbeufwcqv.streamlit.app/
 
-### Streamlit App
-Add your deployed Streamlit link here:
 
-```bash
-https://your-streamlit-app-link.streamlit.app
-```
-
----
 
 # 👩‍💻 Author
 
